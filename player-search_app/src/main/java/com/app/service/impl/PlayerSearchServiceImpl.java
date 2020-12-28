@@ -1,5 +1,6 @@
 package com.app.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.app.dao.PlayerSearchDAO;
@@ -92,8 +93,11 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 	@Override
 	public List<Player> getPlayersByDob(String dob) throws BusinessException {
 		// TODO Auto-generated method stub
+		String o = "01/01/1990";
+		String y = "12/31/2002";
 		List<Player> agePlayersList = null;
-		if(dob == "" || dob == "") {
+		
+		if(dob.compareTo(o)<0 && dob.compareTo(y)>0) {
 			//code for DAO
 			agePlayersList = playerSearchDAO.getPlayersByDob(dob);
 		}else {
@@ -120,4 +124,3 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 	}
 
 }
-//task: complete the other menu options of this app..

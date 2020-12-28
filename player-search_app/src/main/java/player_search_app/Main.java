@@ -25,7 +25,7 @@ public class Main {
 			System.out.println("Connection success");
 			//step 3 - create statement
 			Statement statement = connection.createStatement();
-			String sql = "select id, name, team_id, gender,age from \"MySchema\".player order by id desc";
+			String sql = "select id, name, teamname, gender,age from \"MySchema\".player order by id desc";
 			//step 4 - execute
 			ResultSet resultSet = statement.executeQuery(sql);
 			System.out.println("Query executed");
@@ -33,7 +33,7 @@ public class Main {
 			while(resultSet.next()) {
 				System.out.println("Id: "+resultSet.getInt("id"));
 				System.out.println("Name: "+resultSet.getString("name"));
-				System.out.println("TeamId: "+resultSet.getInt("team_id"));
+				System.out.println("TeamName: "+resultSet.getInt("teamname"));
 				System.out.println("Gender: "+resultSet.getString("gender"));
 				System.out.println("Age: "+resultSet.getInt("age"));
 				System.out.println("Contact: "+resultSet.getLong("contant"));

@@ -82,7 +82,7 @@ public class Player {
 	}
 
 
-	public void setDob(Date dob) {
+	public void setDob(java.sql.Date date) {
 		this.dob = dob;
 	}
 
@@ -105,7 +105,4 @@ public class Player {
 	}
 
 
-}	
-
-
-
+}

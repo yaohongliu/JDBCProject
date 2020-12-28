@@ -1,6 +1,7 @@
 package com.app.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,7 +49,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		// TODO Auto-generated method stub
 		Player player = null;
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender from \"MySchema\".player where id = ?";
+			String sql = "select id, name, age, gender from \"MySchema\".player where contact = ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setLong(1, contact);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -108,22 +109,22 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		List<Player> playersList = new ArrayList<>();
 		
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender, teamname contact, dob from \"MySchema\".player";
+			String sql = "select id, name, age, gender, teamname contact, dob from \"MySchema\".player where age=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, age);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				Player player = new Player();
 				player.setId(resultSet.getInt("id"));
-				player.setAge(resultSet.getInt("age"));
+				player.setAge(age);
 				player.setName(resultSet.getString("name"));
 				player.setGender(resultSet.getString("gender"));
 				player.setContact(resultSet.getLong("contact"));
 				player.setTeamname(resultSet.getString("teamname"));
 				player.setDob(resultSet.getDate("dob"));
-				
+				playersList.add(player);
 			}if(playersList.size()==0){
-				throw new BusinessException("No Player in the db so far");
+				throw new BusinessException("No players found with age "+age);
 			}
 		}catch(ClassNotFoundException | SQLException e) {
 			//System.out.println(e);
@@ -138,7 +139,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		List<Player> playersList = new ArrayList<>();
 		
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender, teamname contact, dob from \"MySchema\".player";
+			String sql = "select id, name, age, gender, teamname contact, dob from \"MySchema\".player where gender=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, gender);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -147,13 +148,14 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 				player.setId(resultSet.getInt("id"));
 				player.setAge(resultSet.getInt("age"));
 				player.setName(resultSet.getString("name"));
-				player.setGender(resultSet.getString("gender"));
+				player.setGender(gender);
 				player.setContact(resultSet.getLong("contact"));
 				player.setTeamname(resultSet.getString("teamname"));
 				player.setDob(resultSet.getDate("dob"));
+				playersList.add(player);
 				
 			}if(playersList.size()==0){
-				throw new BusinessException("No Player in the db so far");
+				throw new BusinessException("No Player found with gender "+ gender);
 			}
 		}catch(ClassNotFoundException | SQLException e) {
 			//System.out.println(e);
@@ -179,7 +181,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 				player.setAge(resultSet.getInt("age"));
 				player.setGender(resultSet.getString("gender"));
 				player.setContact(resultSet.getLong("contact"));
-				player.setTeamname(resultSet.getString("teamname"));
+				player.setTeamname(teamname);
 				player.setDob(resultSet.getDate("dob"));
 				playersList.add(player);
 			}
@@ -199,11 +201,12 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		// TODO Auto-generated method stub
 		List<Player> playersList=new ArrayList<>();
 		try (Connection connection = PostgresqlConnection.getConnection()) {
-			String sql="select id,name,age,gender,teamname,contact,dob from roc_revature.player where teamname=?";
+			String sql="select id,name,age,gender,teamname,contact,dob from roc_revature.player where dob=?";
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, dob);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {
+				Date date = Date.valueOf(dob);
 				Player player =new Player();
 				player.setId(resultSet.getInt("id"));
 				player.setName(resultSet.getString("name"));
@@ -211,7 +214,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 				player.setGender(resultSet.getString("gender"));
 				player.setContact(resultSet.getLong("contact"));
 				player.setTeamname(resultSet.getString("teamname"));
-				player.setDob(resultSet.getDate("dob"));
+				player.setDob(date);
 				playersList.add(player);
 			}
 			if(playersList.size()==0)
@@ -231,14 +234,14 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		// TODO Auto-generated method stub
 		List<Player> playersList=new ArrayList<>();
 		try (Connection connection = PostgresqlConnection.getConnection()) {
-			String sql="select id,name,age,gender,teamname,contact,dob from roc_revature.player where teamname=?";
+			String sql="select id,name,age,gender,teamname,contact,dob from roc_revature.player where name=?";
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, name);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				Player player =new Player();
 				player.setId(resultSet.getInt("id"));
-				player.setName(resultSet.getString("name"));
+				player.setName(name);
 				player.setAge(resultSet.getInt("age"));
 				player.setGender(resultSet.getString("gender"));
 				player.setContact(resultSet.getLong("contact"));
@@ -248,7 +251,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 			}
 			if(playersList.size()==0)
 			{
-				throw new BusinessException("No Players found with teamname "+name);
+				throw new BusinessException("No Players found with name "+name);
 			}
 		}catch (ClassNotFoundException | SQLException e) {
 			//System.out.println(e); // Take off this line when app is live
