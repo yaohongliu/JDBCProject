@@ -1,4 +1,4 @@
-package com.demo;
+package player_search_app;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,6 +36,8 @@ public class Main {
 				System.out.println("TeamId: "+resultSet.getInt("team_id"));
 				System.out.println("Gender: "+resultSet.getString("gender"));
 				System.out.println("Age: "+resultSet.getInt("age"));
+				System.out.println("Contact: "+resultSet.getLong("contant"));
+				System.out.println("DOB: "+resultSet.getDate("dob"));
 			}
 			System.out.println("Results processed");
 		}catch(ClassNotFoundException e) {

@@ -1,5 +1,8 @@
 package com.app.main;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.app.dao.PlayerCrudDAO;
@@ -14,6 +17,15 @@ public class PlayerMain {
 
 		PlayerCrudDAO dao = new PlayerCurdDAOImpl();
 		
+		String s = "1999-09-08";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-mm");
+		sdf.setLenient(false);
+		java.util.Date dob = null;
+		try {
+			dob = sdf.parse(s);
+		}catch(ParseException e) {
+			System.out.println("Invalid date format");
+		}
 		/*Player p = new Player(108, "Allie", 15,"Female");
 		try {
 		if(dao.createPlayer(p)!=0) {
@@ -22,8 +34,9 @@ public class PlayerMain {
 			System.out.println(e.getMessage());
 		}
 	}*/
+		
 		try{
-			Player player = dao.getPlayerById(1);//get information for player id 1
+			Player player = dao.getPlayerById(1001);//get information for player id 1
 			if(player!=null) {
 				System.out.println("Details of player with id "+player.getId());
 				System.out.println(player);

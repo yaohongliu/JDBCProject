@@ -15,7 +15,7 @@ import com.app.module.Player;
 
 public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 	@Override
-	public int createPylater(Player player) throws BusinessException{
+	public int createPlayer(Player player) throws BusinessException{
 		// TODO Auto-generated method stub
 		//step 3 -to 6 all done  by the following code
 		int c = 0;
@@ -36,22 +36,23 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 		}
 		return c;
 	}
-@Override
+
+	@Override
 	public void deletePlayer(int id) {
 		// TODO Auto-generated method stub
 		//task
-	try(Connection connection = PostgresqlConnection.getConnection()){
-		String sql = "delete from  \"MySchema\".player where id = ?";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		preparedStatement.setInt(1000, id);
-		ResultSet resultSet = preparedStatement.executeQuery();
+		try(Connection connection = PostgresqlConnection.getConnection()){
+			String sql = "delete from  \"MySchema\".player where id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1000, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
 		
-	}catch(ClassNotFoundException | SQLException e) {
-		System.out.println(e);
+		}catch(ClassNotFoundException | SQLException e) {
+			System.out.println(e);
+		}		
 	}
-		
-}
-@Override
+	
+	@Override
 	public int updatePlayerContact(int id, long newContact) {
 		// TODO Auto-generated method stub
 		//task 
@@ -60,7 +61,7 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 			String sql = "update \"MySchema\".player set contact = ? where id = ";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1000, id);
-			preparedStatement.setLong(123456, contact);
+			preparedStatement.setLong(123456, newContact);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				
@@ -71,7 +72,8 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 			
 		return 0;
 	}
-@Override
+	
+	@Override
 	public Player getPlayerById(int id) throws BusinessException {
 		// TODO Auto-generated method stub
 		Player player = null;
@@ -86,6 +88,8 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 				player.setAge(resultSet.getInt("age"));
 				player.setName(resultSet.getString("name"));
 				player.setGender(resultSet.getString("gender"));
+				//player.setContact(resultSet.getLong("contact"));
+				//player.setDob(resultSet.getDate("dob"));
 				//player.setAge(resultSet.getInt(""));
 				
 			}else{
@@ -97,12 +101,13 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 		}
 		return player;
 	}
-@Override
+	
+	@Override
 	public List<Player> getAllPlayers() throws BusinessException {
 		// TODO Auto-generated method stub
 		List<Player> playerList = new ArrayList<>();
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender from .player where id = ?";
+			String sql = "select id, name, age, gender, contact, dob from \"MySchema\".player";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
@@ -111,7 +116,8 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 				player.setAge(resultSet.getInt("age"));
 				player.setName(resultSet.getString("name"));
 				player.setGender(resultSet.getString("gender"));
-				//player.setAge(resultSet.getInt("age"));
+				player.setContact(resultSet.getLong("contact"));
+				player.setDob(resultSet.getDate("dob"));
 				
 			}if(playerList.size()==0){
 				throw new BusinessException("No Player in the db so far");

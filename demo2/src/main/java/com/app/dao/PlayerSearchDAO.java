@@ -3,6 +3,7 @@ package com.app.dao;
 import java.util.List;
 
 import com.app.exception.BusinessException;
+import com.app.model.Player;
 import com.app.module.Player;
 
 public interface PlayerSearchDAO {

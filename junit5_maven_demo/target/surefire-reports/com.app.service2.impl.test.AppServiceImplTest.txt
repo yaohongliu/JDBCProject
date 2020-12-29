@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.app.service2.impl.test.AppServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in com.app.service2.impl.test.AppServiceImplTest
+testIsValidPrimeNumberForTrue  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at com.app.service2.impl.test.AppServiceImplTest.testIsValidPrimeNumberForTrue(AppServiceImplTest.java:25)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at com.app.service2.impl.test.AppServiceImplTest.testIsValidPrimeNumberForTrue(AppServiceImplTest.java:25)
+
+testIsValidMobileNumberForTrue  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at com.app.service2.impl.test.AppServiceImplTest.testIsValidMobileNumberForTrue(AppServiceImplTest.java:35)
+
