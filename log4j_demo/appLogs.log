@@ -1,0 +1,72 @@
+{INFO} com.app.main.HelloLog4j Hello from INFO com.app.main.HelloLog4j.main(HelloLog4j.java:15) 364-Dec-2021 Tuesday CST 10:49:34
+{WARN} com.app.main.HelloLog4j Hello from WARN com.app.main.HelloLog4j.main(HelloLog4j.java:16) 364-Dec-2021 Tuesday CST 10:49:34
+{ERROR} com.app.main.HelloLog4j Hello from ERROR com.app.main.HelloLog4j.main(HelloLog4j.java:17) 364-Dec-2021 Tuesday CST 10:49:34
+{FATAL} com.app.main.HelloLog4j Hello from FATAL com.app.main.HelloLog4j.main(HelloLog4j.java:18) 364-Dec-2021 Tuesday CST 10:49:34
+{INFO} com.app.service.HelloLogService Hello from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:11) 364-Dec-2021 Tuesday CST 10:49:34
+{INFO} com.app.service.HelloLogService Bye from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:12) 364-Dec-2021 Tuesday CST 10:49:34
+{INFO} com.app.main.HelloLog4j Hello from INFO com.app.main.HelloLog4j.main(HelloLog4j.java:15) 364-Dec-2021 Tuesday CST 10:50:32
+{WARN} com.app.main.HelloLog4j Hello from WARN com.app.main.HelloLog4j.main(HelloLog4j.java:16) 364-Dec-2021 Tuesday CST 10:50:32
+{ERROR} com.app.main.HelloLog4j Hello from ERROR com.app.main.HelloLog4j.main(HelloLog4j.java:17) 364-Dec-2021 Tuesday CST 10:50:32
+{FATAL} com.app.main.HelloLog4j Hello from FATAL com.app.main.HelloLog4j.main(HelloLog4j.java:18) 364-Dec-2021 Tuesday CST 10:50:32
+{INFO} com.app.service.HelloLogService Hello from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:11) 364-Dec-2021 Tuesday CST 10:50:32
+{INFO} com.app.service.HelloLogService Bye from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:12) 364-Dec-2021 Tuesday CST 10:50:32
+{INFO} com.app.main.HelloLog4j Hello from INFO com.app.main.HelloLog4j.main(HelloLog4j.java:15) 364-Dec-2021 Tuesday CST 10:50:58
+{WARN} com.app.main.HelloLog4j Hello from WARN com.app.main.HelloLog4j.main(HelloLog4j.java:16) 364-Dec-2021 Tuesday CST 10:50:58
+{ERROR} com.app.main.HelloLog4j Hello from ERROR com.app.main.HelloLog4j.main(HelloLog4j.java:17) 364-Dec-2021 Tuesday CST 10:50:58
+{FATAL} com.app.main.HelloLog4j Hello from FATAL com.app.main.HelloLog4j.main(HelloLog4j.java:18) 364-Dec-2021 Tuesday CST 10:50:58
+{INFO} com.app.service.HelloLogService Hello from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:11) 364-Dec-2021 Tuesday CST 10:50:58
+{INFO} com.app.service.HelloLogService Bye from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:12) 364-Dec-2021 Tuesday CST 10:50:58
+{INFO} com.app.main.HelloLog4j Hello from INFO com.app.main.HelloLog4j.main(HelloLog4j.java:15) 364-Dec-2021 Tuesday CST 10:51:45
+{WARN} com.app.main.HelloLog4j Hello from WARN com.app.main.HelloLog4j.main(HelloLog4j.java:16) 364-Dec-2021 Tuesday CST 10:51:45
+{ERROR} com.app.main.HelloLog4j Hello from ERROR com.app.main.HelloLog4j.main(HelloLog4j.java:17) 364-Dec-2021 Tuesday CST 10:51:45
+{FATAL} com.app.main.HelloLog4j Hello from FATAL com.app.main.HelloLog4j.main(HelloLog4j.java:18) 364-Dec-2021 Tuesday CST 10:51:45
+{INFO} com.app.service.HelloLogService Hello from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:11) 364-Dec-2021 Tuesday CST 10:51:45
+{INFO} com.app.service.HelloLogService Bye from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:12) 364-Dec-2021 Tuesday CST 10:51:45
+{INFO} com.app.main.HelloLog4j Hello from INFO com.app.main.HelloLog4j.main(HelloLog4j.java:15) 29-Dec-2021 Tuesday CST 10:52:58
+{WARN} com.app.main.HelloLog4j Hello from WARN com.app.main.HelloLog4j.main(HelloLog4j.java:16) 29-Dec-2021 Tuesday CST 10:52:58
+{ERROR} com.app.main.HelloLog4j Hello from ERROR com.app.main.HelloLog4j.main(HelloLog4j.java:17) 29-Dec-2021 Tuesday CST 10:52:58
+{FATAL} com.app.main.HelloLog4j Hello from FATAL com.app.main.HelloLog4j.main(HelloLog4j.java:18) 29-Dec-2021 Tuesday CST 10:52:58
+{INFO} com.app.service.HelloLogService Hello from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:11) 29-Dec-2021 Tuesday CST 10:52:58
+{INFO} com.app.service.HelloLogService Bye from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:12) 29-Dec-2021 Tuesday CST 10:52:58
+{INFO} com.app.main.HelloLog4j Hello from INFO com.app.main.HelloLog4j.main(HelloLog4j.java:15) 29-Dec-2020 Tuesday CST 10:53:32
+{WARN} com.app.main.HelloLog4j Hello from WARN com.app.main.HelloLog4j.main(HelloLog4j.java:16) 29-Dec-2020 Tuesday CST 10:53:32
+{ERROR} com.app.main.HelloLog4j Hello from ERROR com.app.main.HelloLog4j.main(HelloLog4j.java:17) 29-Dec-2020 Tuesday CST 10:53:32
+{FATAL} com.app.main.HelloLog4j Hello from FATAL com.app.main.HelloLog4j.main(HelloLog4j.java:18) 29-Dec-2020 Tuesday CST 10:53:32
+{INFO} com.app.service.HelloLogService Hello from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:11) 29-Dec-2020 Tuesday CST 10:53:32
+{INFO} com.app.service.HelloLogService Bye from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:12) 29-Dec-2020 Tuesday CST 10:53:32
+{INFO} com.app.main.HelloLog4j Hello from INFO com.app.main.HelloLog4j.main(HelloLog4j.java:15) 29-Dec-2020 Tuesday CST 11:01:46
+{WARN} com.app.main.HelloLog4j Hello from WARN com.app.main.HelloLog4j.main(HelloLog4j.java:16) 29-Dec-2020 Tuesday CST 11:01:46
+{ERROR} com.app.main.HelloLog4j Hello from ERROR com.app.main.HelloLog4j.main(HelloLog4j.java:17) 29-Dec-2020 Tuesday CST 11:01:46
+{FATAL} com.app.main.HelloLog4j Hello from FATAL com.app.main.HelloLog4j.main(HelloLog4j.java:18) 29-Dec-2020 Tuesday CST 11:01:46
+{INFO} com.app.service.HelloLogService Hello from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:11) 29-Dec-2020 Tuesday CST 11:01:46
+{INFO} com.app.service.HelloLogService Bye from log service helloLog() com.app.service.HelloLogService.helloLog(HelloLogService.java:12) 29-Dec-2020 Tuesday CST 11:01:46
+{INFO}   com.app.main.HelloLog4j   Hello from INFO   com.app.main.HelloLog4j.main(HelloLog4j.java:15)   29-Dec-2020 Tuesday CST 11:02:46
+{WARN}   com.app.main.HelloLog4j   Hello from WARN   com.app.main.HelloLog4j.main(HelloLog4j.java:16)   29-Dec-2020 Tuesday CST 11:02:46
+{ERROR}   com.app.main.HelloLog4j   Hello from ERROR   com.app.main.HelloLog4j.main(HelloLog4j.java:17)   29-Dec-2020 Tuesday CST 11:02:46
+{FATAL}   com.app.main.HelloLog4j   Hello from FATAL   com.app.main.HelloLog4j.main(HelloLog4j.java:18)   29-Dec-2020 Tuesday CST 11:02:46
+{INFO}   com.app.service.HelloLogService   Hello from log service helloLog()   com.app.service.HelloLogService.helloLog(HelloLogService.java:11)   29-Dec-2020 Tuesday CST 11:02:46
+{INFO}   com.app.service.HelloLogService   Bye from log service helloLog()   com.app.service.HelloLogService.helloLog(HelloLogService.java:12)   29-Dec-2020 Tuesday CST 11:02:46
+{INFO}  com.app.main.HelloLog4j   Hello from INFO    29-Dec-2020 Tuesday CST 11:04:03
+{WARN}  com.app.main.HelloLog4j   Hello from WARN    29-Dec-2020 Tuesday CST 11:04:03
+{ERROR}  com.app.main.HelloLog4j   Hello from ERROR    29-Dec-2020 Tuesday CST 11:04:03
+{FATAL}  com.app.main.HelloLog4j   Hello from FATAL    29-Dec-2020 Tuesday CST 11:04:03
+{INFO}  com.app.service.HelloLogService   Hello from log service helloLog()    29-Dec-2020 Tuesday CST 11:04:03
+{INFO}  com.app.service.HelloLogService   Bye from log service helloLog()    29-Dec-2020 Tuesday CST 11:04:03
+{INFO}   com.app.main.HelloLog4j          Hello from INFO    29-Dec-2020 Tuesday CST 11:06:10
+{WARN}   com.app.main.HelloLog4j          Hello from WARN    29-Dec-2020 Tuesday CST 11:06:10
+{ERROR}   com.app.main.HelloLog4j          Hello from ERROR    29-Dec-2020 Tuesday CST 11:06:10
+{FATAL}   com.app.main.HelloLog4j          Hello from FATAL    29-Dec-2020 Tuesday CST 11:06:10
+{INFO}   com.app.service.HelloLogService          Hello from log service helloLog()    29-Dec-2020 Tuesday CST 11:06:10
+{INFO}   com.app.service.HelloLogService          Bye from log service helloLog()    29-Dec-2020 Tuesday CST 11:06:10
+{INFO}     com.app.main.HelloLog4j           Hello from INFO    29-Dec-2020 Tuesday CST 11:06:40
+{WARN}     com.app.main.HelloLog4j           Hello from WARN    29-Dec-2020 Tuesday CST 11:06:40
+{ERROR}     com.app.main.HelloLog4j           Hello from ERROR    29-Dec-2020 Tuesday CST 11:06:40
+{FATAL}     com.app.main.HelloLog4j           Hello from FATAL    29-Dec-2020 Tuesday CST 11:06:40
+{INFO}     com.app.service.HelloLogService           Hello from log service helloLog()    29-Dec-2020 Tuesday CST 11:06:40
+{INFO}     com.app.service.HelloLogService           Bye from log service helloLog()    29-Dec-2020 Tuesday CST 11:06:40
+{INFO}   com.app.main.HelloLog4j     Hello from INFO    29-Dec-2020 Tuesday CST 11:06:59
+{WARN}   com.app.main.HelloLog4j     Hello from WARN    29-Dec-2020 Tuesday CST 11:06:59
+{ERROR}   com.app.main.HelloLog4j     Hello from ERROR    29-Dec-2020 Tuesday CST 11:06:59
+{FATAL}   com.app.main.HelloLog4j     Hello from FATAL    29-Dec-2020 Tuesday CST 11:06:59
+{INFO}   com.app.service.HelloLogService     Hello from log service helloLog()    29-Dec-2020 Tuesday CST 11:06:59
+{INFO}   com.app.service.HelloLogService     Bye from log service helloLog()    29-Dec-2020 Tuesday CST 11:06:59
