@@ -19,12 +19,14 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 	public Player getPlayerById(int id) throws BusinessException {
 		// TODO Auto-generated method stub
 		Player player = null;
+		System.out.println("In DAO within getPlayerById() with id = "+id);
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender from \"MySchema\".player where id = ?";
+			String sql = "select id, name, gender, age, dob, contact, teamname from \"MySchema\".player where id = ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
+				System.out.println("If in DAO");
 				player = new Player();
 				player.setId(id);
 				player.setAge(resultSet.getInt("age"));
@@ -35,10 +37,12 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 			    player.setTeamname(resultSet.getString("teamname"));
 				
 			}else{
+				System.out.println("else in dao");
 				throw new BusinessException("No Player found with id "+id);
 			}
 		}catch(ClassNotFoundException | SQLException e) {
 			//System.out.println(e);
+			System.out.println("exception in DAO");
 			throw new BusinessException("Internal error occured contact SYSADMIN");
 		}
 		return player;
@@ -48,8 +52,9 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 	public Player getPlayerByCont(long contact) throws BusinessException {
 		// TODO Auto-generated method stub
 		Player player = null;
+		System.out.println("In DAO within getPlayerByCont() with contact = "+contact);
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender from \"MySchema\".player where contact = ?";
+			String sql = "select id, name, gender, age, dob, contact, teamname from \"MySchema\".player where contact=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setLong(1, contact);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -79,7 +84,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		List<Player> playersList = new ArrayList<>();
 		
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, teamname, gender, contact, dob from \"MySchema\".player";
+			String sql = "select id, name, gender, age, dob, contact, teamname from \"MySchema\".player";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
@@ -91,7 +96,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 				player.setContact(resultSet.getLong("contact"));
 				player.setTeamname(resultSet.getString("teamname"));
 				player.setDob(resultSet.getDate("dob"));
-				
+				playersList.add(player);
 			}if(playersList.size()==0){
 				throw new BusinessException("No Player in the db so far");
 			}
@@ -109,7 +114,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		List<Player> playersList = new ArrayList<>();
 		
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender, teamname contact, dob from \"MySchema\".player where age=?";
+			String sql = "select id, name, gender, age, dob, contact, teamname from \"MySchema\".player where age=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, age);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -139,7 +144,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		List<Player> playersList = new ArrayList<>();
 		
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender, teamname contact, dob from \"MySchema\".player where gender=?";
+			String sql = "select id, name, gender, age, dob, contact, teamname from \"MySchema\".player where gender=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, gender);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -170,7 +175,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		
 		List<Player> playersList=new ArrayList<>();
 		try (Connection connection = PostgresqlConnection.getConnection()) {
-			String sql="select id,name,age,gender,teamname,contact,dob from roc_revature.player where teamname=?";
+			String sql="select id, name, gender, age, dob, contact, teamname from \"MySchema\".player where teamname=?";
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, teamname);
 			ResultSet resultSet=preparedStatement.executeQuery();
@@ -201,12 +206,12 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		// TODO Auto-generated method stub
 		List<Player> playersList=new ArrayList<>();
 		try (Connection connection = PostgresqlConnection.getConnection()) {
-			String sql="select id,name,age,gender,teamname,contact,dob from roc_revature.player where dob=?";
+			Date date = Date.valueOf(dob);
+			String sql="select id, name, gender, age, dob, contact, teamname from \"MySchema\".player where dob=?";
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, dob);
+			preparedStatement.setDate(1, date);
 			ResultSet resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()) {
-				Date date = Date.valueOf(dob);
 				Player player =new Player();
 				player.setId(resultSet.getInt("id"));
 				player.setName(resultSet.getString("name"));
@@ -214,7 +219,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 				player.setGender(resultSet.getString("gender"));
 				player.setContact(resultSet.getLong("contact"));
 				player.setTeamname(resultSet.getString("teamname"));
-				player.setDob(date);
+				player.setDob(resultSet.getDate("dob"));
 				playersList.add(player);
 			}
 			if(playersList.size()==0)
@@ -234,7 +239,7 @@ public class PlayerSearchDAOImpl implements PlayerSearchDAO {
 		// TODO Auto-generated method stub
 		List<Player> playersList=new ArrayList<>();
 		try (Connection connection = PostgresqlConnection.getConnection()) {
-			String sql="select id,name,age,gender,teamname,contact,dob from roc_revature.player where name=?";
+			String sql="select id, name, gender, age, dob, contact, teamname from \"MySchema\".player where name=?";
 			PreparedStatement preparedStatement=connection.prepareStatement(sql);
 			preparedStatement.setString(1, name);
 			ResultSet resultSet=preparedStatement.executeQuery();

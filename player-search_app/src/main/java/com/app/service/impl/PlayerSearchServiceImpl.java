@@ -19,8 +19,10 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 		Player player = null;
 		if(id >1000 && id <1100) {
 			//code for DAO
+			System.out.println("In if before DAO call");
 			player = playerSearchDAO.getPlayerById(id);
 		}else {
+			System.out.println("In else before throw");
 			throw new BusinessException("Enter Player Id "+id+" is Invalid");
 		}
 		
@@ -31,7 +33,7 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 	public Player getPlayerByContact(long contact) throws BusinessException {
 		// TODO Auto-generated method stub
 		Player player = null;
-		if(contact >000000 && contact < 999999) {
+		if(contact > 1000000000 && contact < 2147483647) {
 			//code for DAO
 			player = playerSearchDAO.getPlayerByCont(contact);
 		}else {
@@ -46,6 +48,7 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 		// TODO Auto-generated method stub
 		List<Player> allPlayersList = null;
 		allPlayersList = playerSearchDAO.getAllPlayers();
+		
 		return allPlayersList;
 	}
 
@@ -67,7 +70,7 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 	public List<Player> getPlayersByGender(String gender) throws BusinessException {
 		// TODO Auto-generated method stub
 		List<Player> agePlayersList = null;
-		if(gender == "Female" || gender == "Male") {
+		if(gender.equals("F") || gender.equals("M")) {
 			//code for DAO
 			agePlayersList = playerSearchDAO.getPlayersByGender(gender);
 		}else {
@@ -82,7 +85,7 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 	public List<Player> getPlayersByTeamname(String teamname) throws BusinessException {
 		// TODO Auto-generated method stub
 		List<Player> teamPlayersList = null;
-		if(teamname != null&& teamname.matches("[a-zA-Z]{5,20}")) {
+		if(teamname != null&& teamname.matches("[a-zA-Z]{0,20}")) {
 			teamPlayersList = playerSearchDAO.getPlayersByTeamname(teamname);
 			}else {
 				throw new BusinessException("Enter Player teamname "+teamname+" is Invalid");
@@ -92,31 +95,31 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 
 	@Override
 	public List<Player> getPlayersByDob(String dob) throws BusinessException {
-		List<Player> agePlayersList = null;
+		List<Player> dobPlayersList = null;
 		
 		if(dob != null && dob.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}")){
 			//code for DAO
-			agePlayersList = playerSearchDAO.getPlayersByDob(dob);
+			dobPlayersList = playerSearchDAO.getPlayersByDob(dob);
 		}else {
 			throw new BusinessException("Enter Player dob "+ dob +" is Invalid");
 		}
 		
-		return agePlayersList;
+		return dobPlayersList;
 		
 	}
 
 	@Override
 	public List<Player> getPlayersByName(String name) throws BusinessException {
 		// TODO Auto-generated method stub
-		List<Player> agePlayersList = null;
-		if(name != null&& name.matches("[a-zA-Z]")) {
+		List<Player> namePlayersList = null;
+		if(name != null && name.matches("[a-zA-Z]{0,20} [a-zA-Z]{0,20}")) {
 			//code for DAO
-			agePlayersList = playerSearchDAO.getPlayersByName(name);
+			namePlayersList = playerSearchDAO.getPlayersByName(name);
 		}else {
 			throw new BusinessException("Enter Player Name "+name +" is Invalid");
 		}
 		
-		return agePlayersList;
+		return namePlayersList;
 		
 	}
 

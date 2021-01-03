@@ -6,6 +6,7 @@ import com.app.exception.BusinessException;
 import com.app.model.Player;
 
 public interface PlayerSearchDAO {
+	
 	public Player getPlayerById(int id) throws BusinessException;
 	public Player getPlayerByCont(long contact) throws BusinessException;
 	public List<Player> getAllPlayers() throws BusinessException;

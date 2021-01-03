@@ -31,7 +31,7 @@ public class PlayerSearchMain {
 			System.out.println("9) Exit");
 			System.out.println("Please enter appropriate choice between 1-9");
 			try {
-				ch = Integer.parseInt(sc.nextLine());
+				ch = Integer.parseInt(sc.nextLine());//if you enter special symbols 
 			}catch(NumberFormatException e) {
 			}
 				switch(ch) {
@@ -39,10 +39,9 @@ public class PlayerSearchMain {
 					System.out.println("Enter Player ID to get Player detials ...");
 					try {
 						int id = Integer.parseInt(sc.nextLine());
-						//code to service 
 						Player player = playerSearchService.getPlayerById(id);
 						if(player!=null) {
-							System.out.println("Player found with id: "+id+" detail od the player is");
+							System.out.println("Player found with id: "+id+" detail of the player is");
 							System.out.println(player);
 						}
 					}catch(NumberFormatException e) {
@@ -54,9 +53,10 @@ public class PlayerSearchMain {
 				case 2:
 					System.out.println("Enter Player Contact to get Player detials ...");
 					try {
-						long contact = Integer.parseInt(sc.nextLine());
+						long contact = Long.parseLong(sc.nextLine());
+						
 						//code to service 
-						Player player = playerSearchService.getPlayerByCont(contact);
+						Player player = playerSearchService.getPlayerByContact(contact);
 						if(player!=null) {
 							System.out.println("Player found with contact number: "+contact+" detail of the player is");
 							System.out.println(player);
@@ -68,16 +68,17 @@ public class PlayerSearchMain {
 					}
 					break;
 				case 3:
-					try {
-						int age = Integer.parseInt(sc.nextLine());
-						System.out.println("Enter Player Age to get Player detials ...");
-						List<Player> agePlayersList = playerSearchService.getPlayersByAge(age);
-						if(agePlayersList!= null && agePlayersList.size()>0) {
-							System.out.println("There are "+agePlayersList.size()+" num of players with age"+age+"..printing them..");
-							for(Player p:agePlayersList) {
-								System.out.println(p);
+					System.out.println("Enter Player Age to get Player detials ...");
+						try{
+							int age = Integer.parseInt(sc.nextLine());
+	
+							List<Player> agePlayersList = playerSearchService.getPlayersByAge(age);
+							if(agePlayersList!= null && agePlayersList.size()>0) {
+								System.out.println("There are "+agePlayersList.size()+" num of players with age"+age+"..printing them..");
+								for(Player p:agePlayersList) {
+									System.out.println(p);
+								}
 							}
-						}
 					}catch(NumberFormatException e){
 						System.out.println("Age cannot have special chareacters or spaces or alphabets");
 					}catch(BusinessException e) {
@@ -91,7 +92,7 @@ public class PlayerSearchMain {
 					try {
 						List<Player> genderPlayersList = playerSearchService.getPlayersByGender(gender);
 						if(genderPlayersList != null && genderPlayersList.size()>0) {
-							System.out.println("There are "+ genderPlayersList.size()+" num of players with gender"+gender+"..printing them..");
+							System.out.println("There are "+ genderPlayersList.size()+" num of players with gender "+gender+"..printing them..");
 							for(Player p:genderPlayersList) {
 								System.out.println(p);
 							}
@@ -124,7 +125,7 @@ public class PlayerSearchMain {
 					try {
 						List<Player> dobPlayersList = playerSearchService.getPlayersByDob(dob);
 						if(dobPlayersList != null && dobPlayersList.size()>0) {
-							System.out.println("There are "+dobPlayersList.size()+" num of players with dob"+dob+"..printing them..");
+							System.out.println("There are "+dobPlayersList.size()+" num of players with dob "+dob+"..printing them..");
 							for(Player p:dobPlayersList) {
 								System.out.println(p);
 							}
@@ -140,7 +141,7 @@ public class PlayerSearchMain {
 					try {
 						List<Player> namePlayersList = playerSearchService.getPlayersByName(name);
 						if(namePlayersList != null && namePlayersList.size()>0) {
-							System.out.println("There are "+namePlayersList.size()+" num of players with name"+name+"..printing them..");
+							System.out.println("There are "+namePlayersList.size()+" num of players with name "+name+"..printing them..");
 							for(Player p:namePlayersList) {
 								System.out.println(p);
 							}
@@ -151,11 +152,11 @@ public class PlayerSearchMain {
 					
 					break;
 				case 8:
-					System.out.println("Retriving all the players from back end");
+					System.out.println("Retriving all the players from backend");
 					try {
 						List<Player> allPlayersList = playerSearchService.getAllPlayers();
 						if(allPlayersList != null && allPlayersList.size()>0) {
-							System.out.println("There are "+allPlayersList.size()+" num of players..printing them..");
+							System.out.println("There are "+allPlayersList.size()+" num of players..printing their details..");
 							for(Player p:allPlayersList) {
 								System.out.println(p);
 							}
