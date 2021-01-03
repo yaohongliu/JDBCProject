@@ -28,7 +28,7 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 	}
 
 	@Override
-	public Player getPlayerByCont(long contact) throws BusinessException {
+	public Player getPlayerByContact(long contact) throws BusinessException {
 		// TODO Auto-generated method stub
 		Player player = null;
 		if(contact >000000 && contact < 999999) {
@@ -92,12 +92,9 @@ public class PlayerSearchServiceImpl implements PlayerSearchService {
 
 	@Override
 	public List<Player> getPlayersByDob(String dob) throws BusinessException {
-		// TODO Auto-generated method stub
-		String o = "01/01/1990";
-		String y = "12/31/2002";
 		List<Player> agePlayersList = null;
 		
-		if(dob.compareTo(o)<0 && dob.compareTo(y)>0) {
+		if(dob != null && dob.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}")){
 			//code for DAO
 			agePlayersList = playerSearchDAO.getPlayersByDob(dob);
 		}else {

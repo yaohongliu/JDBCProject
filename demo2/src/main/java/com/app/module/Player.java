@@ -9,12 +9,13 @@ public class Player {
 	private long contact;
 	private Date dob;
 	private String gender;
+	private String teamname;
 	
 	public Player() {
 		}
 	
 	
-	public Player(int id, String name, int age, long contact, Date dob, String gender) {
+	public Player(int id, String name, int age, long contact, Date dob, String gender, String teamname) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -22,6 +23,17 @@ public class Player {
 		this.contact = contact;
 		this.dob = dob;
 		this.gender = gender;
+		this.teamname = teamname;
+	}
+
+
+	public String getTeamname() {
+		return teamname;
+	}
+
+
+	public void setTeamname(String teamname) {
+		this.teamname = teamname;
 	}
 
 
@@ -88,7 +100,7 @@ public class Player {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Player [id="+id+", name="+name+",age="+age+",contact"+contact+",teamname"+",gender"+gender
+		return "Player [id="+id+", name="+name+",age="+age+",contact="+contact+",teamname="+teamname+",gender="+gender
 				+",dob="+dob+"]";
 	}
 

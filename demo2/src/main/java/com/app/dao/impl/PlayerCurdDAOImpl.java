@@ -16,19 +16,20 @@ import com.app.module.Player;
 public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 	@Override
 	public int createPlayer(Player player) throws BusinessException{
-		// TODO Auto-generated method stub
 		//step 3 -to 6 all done  by the following code
 		int c = 0;
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "insert into \"MySchema\".player(id, name, gender,age, dob, contact)values(????)";
+			String sql = "insert into \"MySchema\".player(id, name, gender,age, dob, contact, teamname) values(?,?,?,?,?,?,?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1,player.getId());
 			preparedStatement.setString(2, player.getName());
 			preparedStatement.setString(3, player.getGender());
 			preparedStatement.setInt(4, player.getAge());
-			preparedStatement.setLong(5, player.getContact());
-			preparedStatement.setDate(6, new java.sql.Date(player.getDob().getTime()));
-			c = preparedStatement.executeUpdate();
+			preparedStatement.setDate(5, new java.sql.Date(player.getDob().getTime()));//util.Data to sql.Date
+			preparedStatement.setLong(6, player.getContact());
+			preparedStatement.setString(7, player.getTeamname());
+			
+			c = preparedStatement.executeUpdate();	
 			
 		}catch(ClassNotFoundException | SQLException e){
 			System.out.println(e);
@@ -41,11 +42,12 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 	public void deletePlayer(int id) {
 		// TODO Auto-generated method stub
 		//task
+		int d = 0;
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "delete from  \"MySchema\".player where id = ?";
+			String sql = "delete from  \"MySchema\".player where id=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1000, id);
-			ResultSet resultSet = preparedStatement.executeQuery();
+			preparedStatement.setInt(1, id);
+			d = preparedStatement.executeUpdate();
 		
 		}catch(ClassNotFoundException | SQLException e) {
 			System.out.println(e);
@@ -54,23 +56,20 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 	
 	@Override
 	public int updatePlayerContact(int id, long newContact) {
-		// TODO Auto-generated method stub
 		//task 
-		int u = 0;
+		int u =0;
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "update \"MySchema\".player set contact = ? where id = ";
+			String sql = "update \"MySchema\".player set contact=? where id=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1000, id);
-			preparedStatement.setLong(123456, newContact);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			while(resultSet.next()) {
-				
-			}
+			preparedStatement.setLong(1, newContact);
+			preparedStatement.setInt(2,id);
+		    u = preparedStatement.executeUpdate();
+			
 		}catch(ClassNotFoundException | SQLException e) {
 			System.out.println(e);
 		}
 			
-		return 0;
+		return u;
 	}
 	
 	@Override
@@ -78,20 +77,19 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 		// TODO Auto-generated method stub
 		Player player = null;
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender from \"MySchema\".player where id = ?";
+			String sql = "select name, gender,age, dob, contact, teamname from \"MySchema\".player where id=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, id);//set the first ? to id
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if(resultSet.next()) {
 				player = new Player();
 				player.setId(id);
-				player.setAge(resultSet.getInt("age"));
 				player.setName(resultSet.getString("name"));
 				player.setGender(resultSet.getString("gender"));
-				//player.setContact(resultSet.getLong("contact"));
-				//player.setDob(resultSet.getDate("dob"));
-				//player.setAge(resultSet.getInt(""));
-				
+				player.setAge(resultSet.getInt("age"));
+				player.setDob(resultSet.getDate("dob"));
+				player.setContact(resultSet.getLong("contact"));
+				player.setTeamname(resultSet.getString("teamname"));	
 			}else{
 				throw new BusinessException("No Player found with id"+id);
 			}
@@ -107,7 +105,7 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 		// TODO Auto-generated method stub
 		List<Player> playerList = new ArrayList<>();
 		try(Connection connection = PostgresqlConnection.getConnection()){
-			String sql = "select id, name, age, gender, contact, dob from \"MySchema\".player";
+			String sql = "select id, name, gender,age, dob, contact, teamname from \"MySchema\".player";
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
@@ -118,7 +116,8 @@ public class PlayerCurdDAOImpl implements PlayerCrudDAO{
 				player.setGender(resultSet.getString("gender"));
 				player.setContact(resultSet.getLong("contact"));
 				player.setDob(resultSet.getDate("dob"));
-				
+				player.setTeamname(resultSet.getString("teamname"));
+				playerList.add(player);
 			}if(playerList.size()==0){
 				throw new BusinessException("No Player in the db so far");
 			}
